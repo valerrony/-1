@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class task3 {
+    public static void main(String[] args){
+        System.out.println("Введите начало диапозона чисел");
+        int startValue = Integer.parseInt(scanner());
+        System.out.println("Введите конец диапозна чисел");
+        int endValue = Integer.parseInt(scanner());
+        if(startValue < 100 || endValue > 999){
+            System.out.println("Числа должны быть трехзначные");
+            return;
+        }
+        System.out.println("--------------------");
+        int[] array = determinantNumber(startValue, endValue);
+        for(int i = 0;i < array.length;i++){
+            if(array[i]!=0){
+                System.out.println(array[i]);
+            }
+        }
+
+    }
+
+    public static int[] determinantNumber(int startValue,int endValue) {
+        int[] array = new int[1000];
+
+        int index = 0;
+        for(int i = startValue;i < endValue;i++){
+            if(checkNumber(i) == true){
+                array[index] = i;
+            }
+            index++;
+        }
+
+        return array;
+    }
+
+    public static Boolean checkNumber(int number) {
+        if(number%2==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private static String scanner() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+}
